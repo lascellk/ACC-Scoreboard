@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14284b">
+  <title>ACC Scoreboard</title>
+  <link rel="icon" href="assets/crest.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app">
+  <header class="top">
+    <img src="assets/crest.png" alt="Almonte Curling Club" width="40" height="40">
+    <h1 id="draw-name">Loading…</h1>
+    <span id="cast-slot" class="cast-slot" hidden><google-cast-launcher></google-cast-launcher></span>
+    <a class="top-link" href="tv.html" target="_blank" rel="noopener">TV</a>
+    <a class="top-link" href="admin.html">Admin</a>
+  </header>
+  <div id="timer-bar" class="timer-bar" hidden>
+    <span id="clock" class="clock">--:--</span>
+    <button id="timer-button" type="button" class="primary" hidden>Start draw</button>
+  </div>
+  <p id="offline" class="offline" hidden>Can't reach the scoreboard. Retrying…</p>
+  <main id="sheets" class="sheets"></main>
+  <dialog id="end-dialog" class="end-dialog"></dialog>
+  <script type="module" src="js/score.js"></script>
+</body>
+</html>
