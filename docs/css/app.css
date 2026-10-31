@@ -142,8 +142,8 @@ input[type="radio"] { width: 20px; min-height: 20px; margin: 0; }
   font-size: 14px;
   font-weight: 600;
 }
-.cast-slot { display: inline-block; }
-google-cast-launcher { display: block; width: 28px; height: 28px; --connected-color: var(--gold); --disconnected-color: #fff; cursor: pointer; }
+.cast-button { width: 44px; padding: 0 8px; border: 0; background: transparent; color: #fff; }
+.cast-button.casting { color: var(--gold); }
 .timer-bar {
   position: sticky;
   top: 0;

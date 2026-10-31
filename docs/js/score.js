@@ -5,7 +5,7 @@ import { setupCast } from './cast.js';
 import { endHeader, esc, HAMMER_ICON, lineColumns, notConfiguredNotice, paintClock, requirePin, stoneIcon, teamRow, toast, loadLogos } from './view.js';
 
 const $ = (selector) => document.querySelector(selector);
-let draw = null;
+let draw; // Undefined until the first reply, then null when no draw is live.
 let openSheet = null;
 let editIndex = null;
 
@@ -175,7 +175,7 @@ $('#timer-button').addEventListener('click', () => {
 
 async function start() {
   if (!configured) return notConfiguredNotice();
-  setupCast($('#cast-slot'));
+  setupCast($('#cast-button'));
   await requirePin('score', 'Score entry');
   await loadLogos().catch(() => {});
   watch(

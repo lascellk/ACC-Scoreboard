@@ -203,7 +203,7 @@ $('#timer-panel').addEventListener('click', (event) => {
 
 async function start() {
   if (!configured) return notConfiguredNotice();
-  setupCast($('#cast-slot'));
+  setupCast($('#cast-button'));
   await requirePin('admin', 'Scoreboard admin');
   logos = await loadLogos();
   renderLogos();

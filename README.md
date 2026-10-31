@@ -48,7 +48,7 @@ Follow `ACC_50-50/CAST_SETUP.md`. The registration fee is already paid and the C
 - **Receiver Application URL:** `https://lascellk.github.io/ACC-Scoreboard/tv.html?cast=1`
 - Put the Application ID in `CAST_APP_ID` in `docs/js/config.js`.
 
-The Cast icon then appears at the top of the scoring and admin pages.
+The Cast icon is at the top of the scoring and admin pages. If casting can't start, tapping it says why.
 
 Casting from a web page works in Chrome on Android and computers, but not on iPhones or iPads. An iPhone user can still score, and someone with Android or a computer starts the cast. Until the Cast app is registered, open `tv.html` in Chrome on a computer and use Chrome's **Cast tab**.
 
