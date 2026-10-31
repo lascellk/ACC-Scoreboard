@@ -12,7 +12,7 @@ function explain(error) {
   if (noDevices || error === chrome.cast.ErrorCode.RECEIVER_UNAVAILABLE) {
     toast('No Cast devices found. Check the TV is on and this device is on the same Wi-Fi.');
   } else if (error === chrome.cast.ErrorCode.SESSION_ERROR) {
-    toast("The TV couldn't open the scoreboard. While the Cast app is unpublished, the Chromecast must be registered as a test device and restarted.");
+    toast("The TV couldn't open the scoreboard. Restart the TV's Cast device and try again.");
   } else {
     toast(`Couldn't start casting: ${error}`);
   }

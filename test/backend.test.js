@@ -21,6 +21,14 @@ test('the first saved draw goes live with four games and a full timer', () => {
   assert.equal(draw.games.length, 4);
   assert.equal(draw.leftMs, 95 * 60000);
 });
+test('the timer shows unless the draw hides it, and a timer action keeps the choice', () => {
+  const { api, id } = withDraw();
+  assert.equal(api.get().draw.showTimer, true);
+  admin(api, { action: 'saveDraw', draw: { id, minutes: 95, ends: 8, showTimer: false, games } });
+  assert.equal(api.get().draw.showTimer, false);
+  scorer(api, { action: 'timer', id, op: 'start' });
+  assert.equal(api.get().draw.showTimer, false);
+});
 test('the score PIN cannot change setup and a wrong PIN changes nothing', () => {
   const { api, id } = withDraw();
   assert.equal(scorer(api, { action: 'deleteDraw', id }).ok, false);

@@ -16,6 +16,8 @@ A four-sheet curling scoreboard for the Almonte Curling Club. Phones enter score
 - The timer is a stored start time, so phones and the TV count down together and a page can reload without losing it.
 - The TV fetches its own data. The phone that starts casting can disconnect and the TV keeps updating.
 
+Unticking **Show timer** on a draw hides the countdown and the **Start draw** button on the TV and scoring pages. The admin page still shows the timer.
+
 The hammer is worked out from the ends: the team that scores gives up the hammer, and a blank end leaves it where it was. Correcting an earlier end updates everything after it. **Swap hammer** flips who started with it, for when the setup was wrong.
 
 If a tied game needs an extra end, keep scoring: the line score grows by itself. **Finish game** stops a sheet early and removes its hammer.
@@ -42,7 +44,7 @@ To push later changes with `clasp` instead of pasting, set `"rootDir": "backend"
 
 ### 3. Google Cast
 
-Follow `ACC_50-50/CAST_SETUP.md`. The registration fee is already paid and the Chromecast may already be a test device, so only these parts differ:
+The Cast app is published, so it runs on any Cast device without registering test devices. To set it up again, follow `ACC_50-50/CAST_SETUP.md`. The registration fee is already paid, so only these parts differ:
 
 - **Name:** `ACC Scoreboard`
 - **Receiver Application URL:** `https://lascellk.github.io/ACC-Scoreboard/tv.html?cast=1`

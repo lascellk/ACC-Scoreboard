@@ -57,7 +57,7 @@ input, select {
   border-radius: 8px;
   background: var(--bg);
 }
-input[type="radio"] { width: 20px; min-height: 20px; margin: 0; }
+input[type="radio"], input[type="checkbox"] { width: 20px; min-height: 20px; margin: 0; }
 
 /* Shared marks */
 .stone {
@@ -258,6 +258,7 @@ input[type="radio"] { width: 20px; min-height: 20px; margin: 0; }
 .draw-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .draw-fields .grow { grid-column: 1 / -1; }
 .draw-dialog label { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.draw-dialog label.check { display: flex; align-items: center; gap: 6px; grid-column: 1 / -1; min-height: 36px; font-size: 15px; color: var(--ink); }
 .game-fields { display: grid; gap: 8px; margin: 0; padding: 8px 10px 10px; border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
 .game-fields legend { padding: 0 4px; font-weight: 700; }
 .team-fields { display: grid; grid-template-columns: 3fr 2fr; gap: 8px; }

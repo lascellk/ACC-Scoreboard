@@ -22,7 +22,7 @@ function renderTimer() {
 
 function renderSheets() {
   $('#draw-name').textContent = draw ? draw.name : 'No draw is live';
-  $('#timer-bar').hidden = !draw;
+  $('#timer-bar').hidden = !draw?.showTimer;
   if (!draw) {
     $('#sheets').innerHTML = `<p class="empty">Set up a draw on the <a href="admin.html">admin page</a>.</p>`;
     return;

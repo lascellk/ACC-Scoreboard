@@ -3,7 +3,7 @@
 // PINs live in Script Properties: ADMIN_PIN (draw setup) and SCORE_PIN (score entry).
 
 var TABS = {
-  Draws: ['id', 'name', 'date', 'ends', 'minutes', 'startedAt', 'leftMs'],
+  Draws: ['id', 'name', 'date', 'ends', 'minutes', 'startedAt', 'leftMs', 'showTimer'],
   Games: ['drawId', 'sheet', 'team1', 'logo1', 'team2', 'logo2', 'stone1', 'hammer', 'ends', 'final'],
   Logos: ['id', 'name', 'data']
 };
@@ -136,6 +136,7 @@ function toDraw(row, games) {
   return {
     id: String(row.id), name: String(row.name), date: String(row.date), ends: Number(row.ends),
     minutes: Number(row.minutes), startedAt: Number(row.startedAt), leftMs: Number(row.leftMs),
+    showTimer: String(row.showTimer) !== 'false', // Draws saved before this setting existed are blank.
     games: games.filter(function (game) { return String(game.drawId) === String(row.id); })
       .map(toGame).sort(function (a, b) { return a.sheet - b.sheet; })
   };
@@ -199,6 +200,7 @@ function saveDraw(body) {
   item.date = cleanText(draw.date, 10);
   item.ends = Math.min(Math.max(Number(draw.ends) || 8, 1), 12);
   item.minutes = minutes;
+  item.showTimer = draw.showTimer !== false;
   if (row) writeRow('Draws', row._row, item); else appendRow('Draws', item);
 
   var existing = readTab('Games').filter(function (game) { return String(game.drawId) === String(item.id); });

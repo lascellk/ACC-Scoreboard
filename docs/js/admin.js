@@ -14,7 +14,7 @@ let editing = null;
 
 const blankGame = (sheet) => ({ sheet, team1: '', team2: '', logo1: '', logo2: '', stone: 'red', hammer: 0 });
 const blankDraw = () => ({
-  id: '', name: `Draw ${draws.length + 1}`, date: new Date().toLocaleDateString('en-CA'), ends: 8, minutes: 95,
+  id: '', name: `Draw ${draws.length + 1}`, date: new Date().toLocaleDateString('en-CA'), ends: 8, minutes: 95, showTimer: true,
   games: [1, 2, 3, 4].map(blankGame),
 });
 
@@ -33,7 +33,7 @@ function renderDraws() {
   $('#draw-list').innerHTML = draws.length ? draws.map((draw) => `<article class="draw-card ${draw.id === liveId ? 'is-live' : ''}">
     <header>
       <div><h3>${esc(draw.name)}${draw.id === liveId ? ' <span class="badge">Live</span>' : ''}</h3>
-      <p>${esc(draw.date)} · ${draw.ends} ends · ${draw.minutes} min</p></div>
+      <p>${esc(draw.date)} · ${draw.ends} ends · ${draw.minutes} min${draw.showTimer ? '' : ' (timer hidden)'}</p></div>
     </header>
     <ol>${draw.games.map((game) => `<li>${matchup(game)}</li>`).join('')}</ol>
     <footer>
@@ -80,6 +80,7 @@ function openEditor(draw) {
       <label>Date <input type="date" name="date" value="${esc(draw.date)}"></label>
       <label>Ends <input type="number" name="ends" min="1" max="12" value="${draw.ends}" required></label>
       <label>Timer (minutes) <input type="number" name="minutes" min="1" max="600" value="${draw.minutes}" required></label>
+      <label class="check"><input type="checkbox" name="showTimer" ${draw.showTimer ? 'checked' : ''}> Show timer</label>
     </div>
     ${draw.games.map(gameFields).join('')}
     <footer><button type="submit" class="primary">Save draw</button></footer>
@@ -95,6 +96,7 @@ function readEditor(form) {
     date: data.get('date'),
     ends: Number(data.get('ends')),
     minutes: Number(data.get('minutes')),
+    showTimer: data.has('showTimer'),
     games: [1, 2, 3, 4].map((sheet) => ({
       sheet,
       team1: data.get(`team1-${sheet}`),

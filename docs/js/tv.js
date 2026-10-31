@@ -26,7 +26,7 @@ function render() {
   if (next === shown) return;
   shown = next;
   $('#tv-title').textContent = draw ? draw.name : 'Almonte Curling Club';
-  $('#tv-clock').hidden = !draw;
+  $('#tv-clock').hidden = !draw?.showTimer;
   if (!draw) {
     $('#tv-sheets').innerHTML = '<p class="tv-idle">Next draw coming up</p>';
     return;
